@@ -1,9 +1,5 @@
 {
   "version": 2,
-  "functions": {
-    "api/*.js": { "runtime": "nodejs18.x" },
-    "api/analyze.js": { "runtime": "nodejs18.x", "maxDuration": 60 }
-  },
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "^/$", "dest": "/public/index.html" },
