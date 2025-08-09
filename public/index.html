@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Comment Analyzer - AI-Powered Content Insights</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fab fa-youtube"></i> YouTube Comment Analyzer</h1>
+                <p>Turn your audience feedback into your next viral video ideas</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <div class="input-card">
+                    <h2>Analyze Your Video Comments</h2>
+                    <form id="analyzeForm">
+                        <div class="input-group">
+                            <label for="youtubeUrl">YouTube Video URL</label>
+                            <input 
+                                type="url" 
+                                id="youtubeUrl" 
+                                placeholder="https://www.youtube.com/watch?v=..." 
+                                required
+                            >
+                        </div>
+                        <div class="input-group">
+                            <label for="maxComments">Maximum Comments to Analyze</label>
+                            <select id="maxComments">
+                                <option value="200">200 comments (Fast)</option>
+                                <option value="500" selected>500 comments (Recommended)</option>
+                                <option value="1000">1000 comments (Comprehensive)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="analyze-btn">
+                            <i class="fas fa-search"></i>
+                            Analyze Comments
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loading-card">
+                    <div class="loading-spinner"></div>
+                    <h3>Analyzing Your Comments...</h3>
+                    <p id="loadingStatus">Starting analysis...</p>
+                    <div class="loading-steps">
+                        <div class="step" id="step1">
+                            <i class="fas fa-download"></i>
+                            <span>Fetching comments</span>
+                        </div>
+                        <div class="step" id="step2">
+                            <i class="fas fa-brain"></i>
+                            <span>AI analysis in progress</span>
+                        </div>
+                        <div class="step" id="step3">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Generating video ideas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2 id="videoTitle"></h2>
+                    <div class="video-stats" id="videoStats"></div>
+                </div>
+
+                <div class="overview-cards">
+                    <div class="overview-card">
+                        <div class="card-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 id="totalComments">0</h3>
+                            <p>Comments Analyzed</p>
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 id="overallSentiment">-</h3>
+                            <p>Overall Sentiment</p>
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 id="videoIdeasCount">0</h3>
+                            <p>Video Ideas Generated</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3><i class="fas fa-question-circle"></i> Most Asked Questions</h3>
+                        <div id="frequentQuestions" class="insight-content"></div>
+                    </div>
+
+                    <div class="insight-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Pain Points</h3>
+                        <div id="painPoints" class="insight-content"></div>
+                    </div>
+
+                    <div class="insight-card">
+                        <h3><i class="fas fa-play-circle"></i> Content Requests</h3>
+                        <div id="contentRequests" class="insight-content"></div>
+                    </div>
+
+                    <div class="insight-card">
+                        <h3><i class="fas fa-graduation-cap"></i> Learning Interests</h3>
+                        <div id="learningInterests" class="insight-content"></div>
+                    </div>
+
+                    <div class="insight-card">
+                        <h3><i class="fas fa-times-circle"></i> Common Misconceptions</h3>
+                        <div id="misconceptions" class="insight-content"></div>
+                    </div>
+
+                    <div class="insight-card">
+                        <h3><i class="fas fa-chart-pie"></i> Sentiment Breakdown</h3>
+                        <div id="sentimentBreakdown" class="insight-content"></div>
+                    </div>
+                </div>
+
+                <div class="video-ideas-section">
+                    <h2><i class="fas fa-lightbulb"></i> AI-Generated Video Ideas</h2>
+                    <div id="videoIdeas" class="video-ideas-grid"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Built for content creators who want to understand their audience better</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
